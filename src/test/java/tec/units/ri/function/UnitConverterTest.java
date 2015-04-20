@@ -15,18 +15,18 @@
  */
 package tec.units.ri.function;
 
-import static org.junit.Assert.*;
-import static tec.units.ri.spi.SI.*;
-import static tec.units.ri.spi.SIPrefix.*;
+import org.junit.Test;
+import tec.units.ri.quantity.Quantities;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 import javax.measure.quantity.Length;
 
-import org.junit.Test;
-
-import tec.units.ri.quantity.Quantities;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static tec.units.ri.spi.SI.METRE;
+import static tec.units.ri.spi.SIPrefix.CENTI;
 
 public class UnitConverterTest {
 	private Unit<Length> sourceUnit = METRE;
@@ -39,8 +39,10 @@ public class UnitConverterTest {
 		double length2 = 6.0;
 		double result1 = converter.convert(length1);
 		double result2 = converter.convert(length2);
+		Number result3 = converter.convert(new Double(length1));
 		assertEquals(400, result1, 0);
 		assertEquals(600, result2, 0);
+		assertEquals(400, result3.intValue(), 0);
 	}
 	
 	@Test

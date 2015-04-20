@@ -25,10 +25,9 @@
  */
 package tec.units.ri;
 
+import javax.measure.UnitConverter;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.measure.UnitConverter;
 
 /**
  * <p> The base class for our {@link UnitConverter} implementations.</p>
@@ -100,7 +99,7 @@ public abstract class AbstractConverter implements UnitConverter {
 
     @Override
     public Number convert(Number value) {
-        return convert(Double.valueOf(value.doubleValue()));
+        return convert(value.doubleValue());
     }
 
     public abstract double convert(double value);
